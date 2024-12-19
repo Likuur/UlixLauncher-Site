@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import LauncherButton from '@/components/LauncherButton';
-import VersionInfo from '@/components/VersionInfo';
+import { Download, Shield, Zap, Settings2, Cpu, Cloud, Code, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Download, Shield, Zap, Settings2, Users, Star, Code, Cpu, Cloud, Gamepad2 } from 'lucide-react';
+import VersionInfo from '@/components/VersionInfo';
+import DevelopersSection from '@/components/DevelopersSection';
+import OpenSourceInfo from '@/components/OpenSourceInfo';
 
 const minecraftVersions = [
   { version: "1.20.2", type: "Release", date: "2023-09-21" },
@@ -14,46 +15,46 @@ const minecraftVersions = [
   { version: "1.18.2", type: "Release", date: "2022-02-28" },
 ];
 
-  const features = [
-    {
-      icon: <Shield className="w-10 h-10 text-launcher-100" />,
-      title: "Безопасность",
-      description: "Встроенная защита от вредоносных модификаций и проверка целостности файлов"
-    },
-    {
-      icon: <Zap className="w-10 h-10 text-launcher-100" />,
-      title: "Быстрая загрузка",
-      description: "Оптимизированная система загрузки модов и ресурспаков"
-    },
-    {
-      icon: <Settings2 className="w-10 h-10 text-launcher-100" />,
-      title: "Гибкая настройка",
-      description: "Простое управление версиями, модами и настройками игры"
-    }
-  ];
+const features = [
+  {
+    icon: <Shield className="w-10 h-10 text-launcher-100" />,
+    title: "Безопасность",
+    description: "Встроенная защита от вредоносных модификаций и проверка целостности файлов"
+  },
+  {
+    icon: <Zap className="w-10 h-10 text-launcher-100" />,
+    title: "Быстрая загрузка",
+    description: "Оптимизированная система загрузки модов и ресурспаков"
+  },
+  {
+    icon: <Settings2 className="w-10 h-10 text-launcher-100" />,
+    title: "Гибкая настройка",
+    description: "Простое управление версиями, модами и настройками игры"
+  }
+];
 
-  const additionalFeatures = [
-    {
-      icon: <Cpu className="w-8 h-8 text-launcher-100" />,
-      title: "Оптимизация",
-      description: "Автоматическая настройка параметров для максимальной производительности"
-    },
-    {
-      icon: <Cloud className="w-8 h-8 text-launcher-100" />,
-      title: "Облачное хранение",
-      description: "Синхронизация настроек и сохранений между устройствами"
-    },
-    {
-      icon: <Code className="w-8 h-8 text-launcher-100" />,
-      title: "Модпаки",
-      description: "Простая установка и управление модпаками в один клик"
-    },
-    {
-      icon: <Users className="w-8 h-8 text-launcher-100" />,
-      title: "Мультиплеер",
-      description: "Удобное управление серверами и быстрое подключение"
-    }
-  ];
+const additionalFeatures = [
+  {
+    icon: <Cpu className="w-8 h-8 text-launcher-100" />,
+    title: "Оптимизация",
+    description: "Автоматическая настройка параметров для максимальной производительности"
+  },
+  {
+    icon: <Cloud className="w-8 h-8 text-launcher-100" />,
+    title: "Облачное хранение",
+    description: "Синхронизация настроек и сохранений между устройствами"
+  },
+  {
+    icon: <Code className="w-8 h-8 text-launcher-100" />,
+    title: "Модпаки",
+    description: "Простая установка и управление модпаками в один клик"
+  },
+  {
+    icon: <Users className="w-8 h-8 text-launcher-100" />,
+    title: "Мультиплеер",
+    description: "Удобное управление серверами и быстрое подключение"
+  }
+];
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -95,7 +96,7 @@ const Index = () => {
           {/* Minecraft Versions Section */}
           <div className="mb-16 animate-slide-up">
             <h2 className="text-2xl md:text-3xl font-pixel text-launcher-100 text-center mb-8">
-              Доступные версии
+              Популярные версии
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {minecraftVersions.map((ver) => (
@@ -155,27 +156,11 @@ const Index = () => {
             </div>
           </div>
 
-          {/* About Section */}
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl font-pixel text-launcher-100 mb-6">
-              Почему UlixLauncher?
-            </h2>
-            <div className="text-launcher-200 max-w-3xl mx-auto space-y-4">
-              <p className="leading-relaxed">
-                UlixLauncher - это не просто программа для запуска Minecraft. Это комплексное решение, 
-                разработанное с учётом потребностей как новичков, так и опытных игроков.
-              </p>
-              <p className="leading-relaxed">
-                Наш лаунчер обеспечивает максимальную производительность, безопасность и удобство 
-                использования, позволяя вам сосредоточиться на самом главном - игре.
-              </p>
-              <p className="leading-relaxed">
-                С UlixLauncher вы получаете доступ к огромной библиотеке модов, текстур и шейдеров,
-                которые можно установить в пару кликов. Автоматические обновления и резервное копирование
-                обеспечивают сохранность ваших данных.
-              </p>
-            </div>
-          </div>
+          {/* Developers Section */}
+          <DevelopersSection />
+
+          {/* Open Source Info */}
+          <OpenSourceInfo />
 
           {/* Stats Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 animate-slide-up">
