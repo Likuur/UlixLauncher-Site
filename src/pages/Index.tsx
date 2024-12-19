@@ -5,15 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Download, Shield, Zap, Settings2, Users, Star, Code, Cpu, Cloud, Gamepad2 } from 'lucide-react';
 
-const Index = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleLaunch = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  };
+const minecraftVersions = [
+  { version: "1.20.2", type: "Release", date: "2023-09-21" },
+  { version: "1.20.1", type: "Release", date: "2023-06-14" },
+  { version: "1.19.4", type: "Release", date: "2023-03-14" },
+  { version: "1.19.3", type: "Release", date: "2022-12-07" },
+  { version: "1.19.2", type: "Release", date: "2022-08-05" },
+  { version: "1.18.2", type: "Release", date: "2022-02-28" },
+];
 
   const features = [
     {
@@ -56,6 +55,17 @@ const Index = () => {
     }
   ];
 
+const Index = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedVersion, setSelectedVersion] = useState(minecraftVersions[0]);
+
+  const handleLaunch = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  };
+
   return (
     <div className="min-h-screen w-full bg-launcher-gradient overflow-hidden relative">
       <div className="absolute inset-0 bg-launcher-glow animate-pulse-glow"></div>
@@ -78,7 +88,31 @@ const Index = () => {
                 <Download className="mr-2" />
                 Скачать лаунчер
               </Button>
-              <VersionInfo version="1.20.1" status="online" />
+              <VersionInfo version={selectedVersion.version} status="online" />
+            </div>
+          </div>
+
+          {/* Minecraft Versions Section */}
+          <div className="mb-16 animate-slide-up">
+            <h2 className="text-2xl md:text-3xl font-pixel text-launcher-100 text-center mb-8">
+              Доступные версии
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {minecraftVersions.map((ver) => (
+                <div
+                  key={ver.version}
+                  onClick={() => setSelectedVersion(ver)}
+                  className={`p-4 rounded-lg border cursor-pointer transition-all duration-300 ${
+                    selectedVersion.version === ver.version
+                      ? 'bg-launcher-800 border-launcher-500'
+                      : 'bg-launcher-800/50 border-launcher-700 hover:bg-launcher-800/70'
+                  }`}
+                >
+                  <div className="text-launcher-100 font-pixel text-lg mb-2">{ver.version}</div>
+                  <div className="text-launcher-200 text-sm">{ver.type}</div>
+                  <div className="text-launcher-300 text-xs">{ver.date}</div>
+                </div>
+              ))}
             </div>
           </div>
 

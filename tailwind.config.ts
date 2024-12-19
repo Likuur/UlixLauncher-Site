@@ -70,9 +70,9 @@ export default {
         },
       },
       backgroundImage: {
-        'launcher-gradient': 'linear-gradient(to bottom right, #1a2f23, #314c3b)',
-        'launcher-glow': 'radial-gradient(circle at center, rgba(92, 229, 157, 0.1) 0%, rgba(26, 47, 35, 0) 70%)',
-        'launcher-shine': 'linear-gradient(45deg, transparent 0%, rgba(92, 229, 157, 0.1) 50%, transparent 100%)',
+        'launcher-gradient': 'linear-gradient(to bottom right, #0b130e, #1a2f23)',
+        'launcher-glow': 'radial-gradient(circle at center, rgba(76, 121, 93, 0.15) 0%, rgba(11, 19, 14, 0) 70%)',
+        'launcher-shine': 'linear-gradient(45deg, transparent 0%, rgba(76, 121, 93, 0.15) 50%, transparent 100%)',
       },
       keyframes: {
         "float": {
