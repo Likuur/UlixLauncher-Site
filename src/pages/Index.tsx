@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DevelopersSection from '@/components/DevelopersSection';
 import OpenSourceInfo from '@/components/OpenSourceInfo';
 import TechnicalInfo from '@/components/TechnicalInfo';
 import LanguageSelector from '@/components/LanguageSelector';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
+import DevelopmentStatus from '@/components/DevelopmentStatus';
 import { useTranslation } from 'react-i18next';
+
+type Theme = 'dark' | 'light' | 'classic' | 'minecraft';
 
 const minecraftVersions = [
   { version: "1.21", type: "Release", date: "2024" },
@@ -17,20 +21,55 @@ const minecraftVersions = [
 
 const Index = () => {
   const { t } = useTranslation();
-  const [isLoading, setIsLoading] = useState(false);
   const [selectedVersion, setSelectedVersion] = useState(minecraftVersions[0]);
+  const [theme, setTheme] = useState<Theme>('dark');
+  const [gradientColors, setGradientColors] = useState({ from: '#4c795d', to: '#0b130e' });
 
   const handleDownload = () => {
     window.location.href = "example.com/ulix.exe";
   };
+
+  useEffect(() => {
+    const root = document.documentElement;
+    switch (theme) {
+      case 'light':
+        root.classList.remove('dark', 'minecraft', 'classic');
+        root.style.setProperty('--background', '0 0% 100%');
+        root.style.setProperty('--foreground', '222.2 84% 4.9%');
+        break;
+      case 'dark':
+        root.classList.add('dark');
+        root.classList.remove('minecraft', 'classic');
+        root.style.setProperty('--background', '158 47% 8%');
+        root.style.setProperty('--foreground', '0 0% 98%');
+        break;
+      case 'classic':
+        root.classList.add('classic');
+        root.classList.remove('dark', 'minecraft');
+        root.style.background = `linear-gradient(to bottom right, ${gradientColors.from}, ${gradientColors.to})`;
+        break;
+      case 'minecraft':
+        root.classList.add('minecraft');
+        root.classList.remove('dark', 'classic');
+        root.style.setProperty('--background', '0 0% 0%');
+        root.style.setProperty('--foreground', '0 0% 100%');
+        break;
+    }
+  }, [theme, gradientColors]);
 
   return (
     <div className="min-h-screen w-full bg-launcher-gradient overflow-hidden relative">
       <div className="absolute inset-0 bg-launcher-glow animate-pulse-glow"></div>
       <div className="relative">
         <div className="container mx-auto px-4 py-16">
-          <div className="absolute top-4 right-4">
+          <div className="absolute top-4 right-4 flex gap-4">
             <LanguageSelector />
+            <ThemeSwitcher
+              currentTheme={theme}
+              onThemeChange={setTheme}
+              gradientColors={gradientColors}
+              onGradientChange={setGradientColors}
+            />
           </div>
 
           {/* Hero Section */}
@@ -63,13 +102,7 @@ const Index = () => {
           </div>
 
           {/* Development Status */}
-          <div className="text-center mb-16 animate-slide-up">
-            <div className="inline-block bg-launcher-800/50 px-6 py-3 rounded-lg border border-launcher-500">
-              <p className="text-launcher-100 font-pixel">
-                {t('activeDevelopment')}
-              </p>
-            </div>
-          </div>
+          <DevelopmentStatus />
 
           {/* Minecraft Versions Section */}
           <div className="mb-16 animate-slide-up">
