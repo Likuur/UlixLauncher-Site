@@ -73,7 +73,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'ru',
+    lng: 'ru', // default language
     interpolation: {
       escapeValue: false,
     },
