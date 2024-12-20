@@ -3,9 +3,9 @@ import { Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const developers = [
-  { name: "Unnamed0a0", role: "Lead Developer" },
-  { name: "Денька", role: "Core Developer" },
-  { name: "Likuur", role: "Core Developer" },
+  { name: "Unnamed0a0", role: "Кодер, дизайнер, создатель лаунчера" },
+  { name: "Денька", role: "Давал идеи для программы" },
+  { name: "Likuur", role: "Гл. Кодер + помощь в создании" },
 ];
 
 const DevelopersSection = () => {

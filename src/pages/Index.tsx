@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { Download, Shield, Zap, Settings2, Cpu, Cloud, Code, Users } from 'lucide-react';
+import { Download, Shield, Zap, Settings2, Cpu, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import VersionInfo from '@/components/VersionInfo';
 import DevelopersSection from '@/components/DevelopersSection';
 import OpenSourceInfo from '@/components/OpenSourceInfo';
 
 const minecraftVersions = [
-  { version: "1.20.2", type: "Release", date: "2023-09-21" },
-  { version: "1.20.1", type: "Release", date: "2023-06-14" },
-  { version: "1.19.4", type: "Release", date: "2023-03-14" },
-  { version: "1.19.3", type: "Release", date: "2022-12-07" },
+  { version: "1.21", type: "Release", date: "2024" },
   { version: "1.19.2", type: "Release", date: "2022-08-05" },
   { version: "1.18.2", type: "Release", date: "2022-02-28" },
+  { version: "1.16.5", type: "Release", date: "2021-01-14" },
+  { version: "1.12.2", type: "Release", date: "2017-09-18" },
 ];
 
 const features = [
@@ -24,12 +22,12 @@ const features = [
   {
     icon: <Zap className="w-10 h-10 text-launcher-100" />,
     title: "Быстрая загрузка",
-    description: "Оптимизированная система загрузки модов и ресурспаков"
+    description: "Оптимизированная система загрузки"
   },
   {
     icon: <Settings2 className="w-10 h-10 text-launcher-100" />,
     title: "Гибкая настройка",
-    description: "Простое управление версиями, модами и настройками игры"
+    description: "Простое управление версиями и настройками игры"
   }
 ];
 
@@ -38,16 +36,6 @@ const additionalFeatures = [
     icon: <Cpu className="w-8 h-8 text-launcher-100" />,
     title: "Оптимизация",
     description: "Автоматическая настройка параметров для максимальной производительности"
-  },
-  {
-    icon: <Cloud className="w-8 h-8 text-launcher-100" />,
-    title: "Облачное хранение",
-    description: "Синхронизация настроек и сохранений между устройствами"
-  },
-  {
-    icon: <Code className="w-8 h-8 text-launcher-100" />,
-    title: "Модпаки",
-    description: "Простая установка и управление модпаками в один клик"
   },
   {
     icon: <Users className="w-8 h-8 text-launcher-100" />,
@@ -78,19 +66,16 @@ const Index = () => {
               UlixLauncher
             </h1>
             <p className="text-lg md:text-xl text-launcher-200 mb-8 max-w-2xl font-pixel leading-relaxed">
-              Современный лаунчер для Minecraft с продвинутым управлением модами
+              Современный лаунчер для Minecraft с продвинутым управлением
             </p>
-            <div className="flex flex-col md:flex-row gap-4 items-center">
-              <Button 
-                size="lg"
-                className="bg-launcher-500 hover:bg-launcher-600 text-white font-pixel transform hover:scale-105 transition-all duration-300"
-                onClick={handleLaunch}
-              >
-                <Download className="mr-2" />
-                Скачать лаунчер
-              </Button>
-              <VersionInfo version={selectedVersion.version} status="online" />
-            </div>
+            <Button 
+              size="lg"
+              className="bg-launcher-500 hover:bg-launcher-600 text-white font-pixel transform hover:scale-105 transition-all duration-300"
+              onClick={handleLaunch}
+            >
+              <Download className="mr-2" />
+              Скачать лаунчер
+            </Button>
           </div>
 
           {/* Minecraft Versions Section */}
@@ -140,7 +125,7 @@ const Index = () => {
             <h2 className="text-2xl md:text-3xl font-pixel text-launcher-100 text-center mb-8">
               Расширенные возможности
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {additionalFeatures.map((feature, index) => (
                 <div 
                   key={index}
@@ -170,7 +155,7 @@ const Index = () => {
             </div>
             <div className="text-center p-6 bg-launcher-800/30 rounded-lg border border-launcher-700">
               <div className="text-4xl font-pixel text-launcher-100 mb-2">50K+</div>
-              <div className="text-launcher-200">Доступных модов</div>
+              <div className="text-launcher-200">Загрузок</div>
             </div>
             <div className="text-center p-6 bg-launcher-800/30 rounded-lg border border-launcher-700">
               <div className="text-4xl font-pixel text-launcher-100 mb-2">99.9%</div>
