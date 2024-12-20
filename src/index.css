@@ -36,3 +36,50 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+.minecraft-text {
+  text-shadow: 2px 2px #000, -2px -2px #000, 2px -2px #000, -2px 2px #000;
+  letter-spacing: 2px;
+}
+
+.minecraft-card {
+  box-shadow: inset 0 0 20px rgba(76, 121, 93, 0.2);
+  backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.minecraft-card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.minecraft-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.minecraft-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(76, 121, 93, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
