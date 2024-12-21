@@ -20,7 +20,7 @@ const SnowEffect = () => {
       return month === 11 || month === 0 || month === 1; // December, January, February
     };
 
-    let interval: number;
+    let interval: NodeJS.Timeout;
     if (isWinter()) {
       interval = setInterval(createSnowflake, 200);
     }

@@ -11,6 +11,12 @@ import { useTranslation } from 'react-i18next';
 
 type Theme = 'dark' | 'light' | 'customizable';
 
+interface MinecraftVersion {
+  version: string;
+  type: string;
+  date: string;
+}
+
 const minecraftVersions = [
   { version: "1.21", type: "Release", date: "2024" },
   { version: "1.19.2", type: "Release", date: "2022-08-05" },
@@ -23,6 +29,7 @@ const Index = () => {
   const { t } = useTranslation();
   const [theme, setTheme] = useState<Theme>('dark');
   const [gradientColors, setGradientColors] = useState({ from: '#4c795d', to: '#0b130e' });
+  const [selectedVersion, setSelectedVersion] = useState<MinecraftVersion>(minecraftVersions[0]);
 
   useEffect(() => {
     const root = document.documentElement;
