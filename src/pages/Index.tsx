@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Download, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DevelopersSection from '@/components/DevelopersSection';
 import OpenSourceInfo from '@/components/OpenSourceInfo';
 import TechnicalInfo from '@/components/TechnicalInfo';
 import LanguageSelector from '@/components/LanguageSelector';
-import ThemeSwitcher from '@/components/ThemeSwitcher';
 import SnowEffect from '@/components/SnowEffect';
 import { useTranslation } from 'react-i18next';
-
-type Theme = 'dark' | 'light' | 'customizable';
 
 interface MinecraftVersion {
   version: string;
@@ -27,40 +24,15 @@ const minecraftVersions = [
 
 const Index = () => {
   const { t } = useTranslation();
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [gradientColors, setGradientColors] = useState({ from: '#4c795d', to: '#0b130e' });
   const [selectedVersion, setSelectedVersion] = useState<MinecraftVersion>(minecraftVersions[0]);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.remove('dark', 'light');
-    
-    switch (theme) {
-      case 'light':
-        root.classList.add('light');
-        break;
-      case 'dark':
-        root.classList.add('dark');
-        break;
-      case 'customizable':
-        root.style.background = `linear-gradient(to bottom right, ${gradientColors.from}, ${gradientColors.to})`;
-        break;
-    }
-  }, [theme, gradientColors]);
 
   return (
     <div className="min-h-screen w-full bg-background overflow-hidden relative">
       <SnowEffect />
       <div className="relative">
         <div className="container mx-auto px-4 py-16">
-          <div className="absolute top-4 right-4 flex gap-4">
+          <div className="absolute top-4 right-4">
             <LanguageSelector />
-            <ThemeSwitcher
-              currentTheme={theme}
-              onThemeChange={setTheme}
-              gradientColors={gradientColors}
-              onGradientChange={setGradientColors}
-            />
           </div>
 
           {/* Hero Section */}
