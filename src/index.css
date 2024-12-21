@@ -135,6 +135,25 @@
   }
 }
 
+.snow {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: fall linear forwards;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -157,22 +176,4 @@
 
 .delay-300 {
   animation-delay: 300ms;
-}
-
-.snow {
-  position: fixed;
-  top: -10px;
-  width: 10px;
-  height: 10px;
-  background: white;
-  border-radius: 50%;
-  filter: blur(1px);
-  animation: fall linear forwards;
-  z-index: 1;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(100vh);
-  }
 }
