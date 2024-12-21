@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { useTranslation } from 'react-i18next';
 
-type Theme = 'dark' | 'light' | 'classic' | 'minecraft';
+type Theme = 'dark' | 'light' | 'customizable';
 
 interface ThemeSwitcherProps {
   currentTheme: Theme;
@@ -17,34 +17,33 @@ const ThemeSwitcher = ({ currentTheme, onThemeChange, gradientColors, onGradient
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col gap-4 p-4 bg-launcher-800/50 rounded-lg border border-launcher-500 animate-fade-in">
+    <div className="flex flex-col gap-4 p-4 bg-card rounded-lg border border-input animate-fade-in">
       <Select value={currentTheme} onValueChange={(value) => onThemeChange(value as Theme)}>
-        <SelectTrigger className="w-[180px] minecraft-button">
+        <SelectTrigger className="w-[180px]">
           <SelectValue placeholder={t('selectTheme')} />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="dark">{t('darkTheme')}</SelectItem>
           <SelectItem value="light">{t('lightTheme')}</SelectItem>
-          <SelectItem value="classic">{t('classicTheme')}</SelectItem>
-          <SelectItem value="minecraft">{t('minecraftTheme')}</SelectItem>
+          <SelectItem value="customizable">{t('customizableTheme')}</SelectItem>
         </SelectContent>
       </Select>
 
-      {currentTheme === 'classic' && onGradientChange && (
+      {currentTheme === 'customizable' && onGradientChange && (
         <div className="flex flex-col gap-2 animate-slide-up">
+          <label className="text-sm">{t('fromColor')}</label>
           <Input
             type="color"
             value={gradientColors?.from}
             onChange={(e) => onGradientChange({ ...gradientColors!, from: e.target.value })}
             className="h-8 cursor-pointer"
-            placeholder={t('fromColor')}
           />
+          <label className="text-sm">{t('toColor')}</label>
           <Input
             type="color"
             value={gradientColors?.to}
             onChange={(e) => onGradientChange({ ...gradientColors!, to: e.target.value })}
             className="h-8 cursor-pointer"
-            placeholder={t('toColor')}
           />
         </div>
       )}

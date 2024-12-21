@@ -13,6 +13,12 @@ const resources = {
       interface: 'Интерфейс',
       functionality: 'Функционал',
       activeDevelopment: 'Лаунчер активно развивается!',
+      selectTheme: 'Выберите тему',
+      darkTheme: 'Тёмная',
+      lightTheme: 'Светлая',
+      customizableTheme: 'Настраиваемая',
+      fromColor: 'Начальный цвет',
+      toColor: 'Конечный цвет',
     },
   },
   en: {
@@ -26,6 +32,12 @@ const resources = {
       interface: 'Interface',
       functionality: 'Functionality',
       activeDevelopment: 'The launcher is actively being developed!',
+      selectTheme: 'Select Theme',
+      darkTheme: 'Dark',
+      lightTheme: 'Light',
+      customizableTheme: 'Customizable',
+      fromColor: 'From Color',
+      toColor: 'To Color',
     },
   },
   fr: {
@@ -39,6 +51,12 @@ const resources = {
       interface: 'Interface',
       functionality: 'Fonctionnalité',
       activeDevelopment: 'Le lanceur est en développement actif !',
+      selectTheme: 'Sélectionner le thème',
+      darkTheme: 'Sombre',
+      lightTheme: 'Clair',
+      customizableTheme: 'Personnalisable',
+      fromColor: 'Couleur de départ',
+      toColor: 'Couleur de fin',
     },
   },
   de: {
@@ -52,6 +70,12 @@ const resources = {
       interface: 'Benutzeroberfläche',
       functionality: 'Funktionalität',
       activeDevelopment: 'Der Launcher wird aktiv entwickelt!',
+      selectTheme: 'Thema auswählen',
+      darkTheme: 'Dunkel',
+      lightTheme: 'Hell',
+      customizableTheme: 'Anpassbar',
+      fromColor: 'Von Farbe',
+      toColor: 'Bis Farbe',
     },
   },
   uk: {
@@ -65,18 +89,22 @@ const resources = {
       interface: 'Інтерфейс',
       functionality: 'Функціонал',
       activeDevelopment: 'Лаунчер активно розробляється!',
+      selectTheme: 'Виберіть тему',
+      darkTheme: 'Темна',
+      lightTheme: 'Світла',
+      customizableTheme: 'Налаштовувана',
+      fromColor: 'Початковий колір',
+      toColor: 'Кінцевий колір',
     },
   },
 };
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    lng: 'ru', // default language
-    interpolation: {
-      escapeValue: false,
-    },
-  });
+i18n.use(initReactI18next).init({
+  resources,
+  lng: 'ru',
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 export default i18n;
