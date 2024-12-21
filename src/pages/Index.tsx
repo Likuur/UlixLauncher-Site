@@ -26,6 +26,16 @@ const Index = () => {
   const { t } = useTranslation();
   const [selectedVersion, setSelectedVersion] = useState<MinecraftVersion>(minecraftVersions[0]);
 
+  const handleDownload = () => {
+    const downloadUrl = 'https://raw.githubusercontent.com/Likuur/UlixLauncher/refs/heads/master/Installer/UlixInstaller.exe';
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = 'UlixInstaller.exe';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen w-full bg-background overflow-hidden relative">
       <SnowEffect />
@@ -47,7 +57,7 @@ const Index = () => {
               <Button 
                 size="lg"
                 className="bg-launcher-500 hover:bg-launcher-600 text-white font-pixel transform hover:scale-105 transition-all duration-300 minecraft-button"
-                onClick={() => window.location.href = "example.com/ulix.exe"}
+                onClick={handleDownload}
               >
                 <Download className="mr-2" />
                 {t('downloadButton')}
