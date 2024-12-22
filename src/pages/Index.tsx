@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Download, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DevelopersSection from '@/components/DevelopersSection';
@@ -8,23 +8,8 @@ import LanguageSelector from '@/components/LanguageSelector';
 import SnowEffect from '@/components/SnowEffect';
 import { useTranslation } from 'react-i18next';
 
-interface MinecraftVersion {
-  version: string;
-  type: string;
-  date: string;
-}
-
-const minecraftVersions = [
-  { version: "1.21", type: "Release", date: "2024" },
-  { version: "1.19.2", type: "Release", date: "2022-08-05" },
-  { version: "1.18.2", type: "Release", date: "2022-02-28" },
-  { version: "1.16.5", type: "Release", date: "2021-01-14" },
-  { version: "1.12.2", type: "Release", date: "2017-09-18" },
-];
-
 const Index = () => {
   const { t } = useTranslation();
-  const [selectedVersion, setSelectedVersion] = useState<MinecraftVersion>(minecraftVersions[0]);
 
   const handleDownload = () => {
     const downloadUrl = 'https://raw.githubusercontent.com/Likuur/UlixLauncher/refs/heads/master/Installer/UlixInstaller.exe';
@@ -71,32 +56,6 @@ const Index = () => {
                 <Github className="mr-2" />
                 {t('sourceCode')}
               </Button>
-            </div>
-          </div>
-
-          {/* Minecraft Versions Section */}
-          <div className="mb-16 animate-slide-up">
-            <h2 className="text-2xl md:text-3xl font-pixel text-launcher-100 text-center mb-8">
-              {t('popularVersions')}
-            </h2>
-            <div className="flex flex-col items-center">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                {minecraftVersions.map((ver) => (
-                  <div
-                    key={ver.version}
-                    onClick={() => setSelectedVersion(ver)}
-                    className={`p-6 rounded-lg border cursor-pointer transition-all duration-300 transform hover:scale-105 minecraft-card ${
-                      selectedVersion.version === ver.version
-                        ? 'bg-launcher-800 border-launcher-500'
-                        : 'bg-launcher-800/50 border-launcher-700 hover:bg-launcher-800/70'
-                    }`}
-                  >
-                    <div className="text-launcher-100 font-pixel text-2xl mb-2">{ver.version}</div>
-                    <div className="text-launcher-200 text-sm">{ver.type}</div>
-                    <div className="text-launcher-300 text-xs">{ver.date}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
