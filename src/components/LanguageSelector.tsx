@@ -23,7 +23,7 @@ const LanguageSelector = () => {
           className={`font-pixel ${
             i18n.language === lang.code
               ? 'bg-launcher-500/20 text-launcher-100'
-              : 'text-launcher-200 hover:bg-launcher-500/10'
+              : 'text-launcher-200 hover:bg-launcher-500/10 hover:text-launcher-300'
           }`}
           onClick={() => i18n.changeLanguage(lang.code)}
         >

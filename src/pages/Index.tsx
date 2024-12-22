@@ -50,7 +50,7 @@ const Index = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-launcher-500 text-launcher-100 font-pixel hover:bg-launcher-500/20 minecraft-button"
+                className="border-launcher-500 text-launcher-100 font-pixel hover:bg-launcher-500/20 hover:text-launcher-300 minecraft-button"
                 onClick={() => window.open('https://github.com/Likuur/UlixLauncher', '_blank')}
               >
                 <Github className="mr-2" />
